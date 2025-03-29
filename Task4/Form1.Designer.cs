@@ -1,24 +1,24 @@
-﻿namespace lab1
+﻿namespace Task4
 {
-	partial class Form1
-	{
-		/// <summary>
-		///  Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer components = null;
+    partial class Form1
+    {
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		///  Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         #region Windows Form Designer generated code
 
@@ -35,21 +35,20 @@
             // listBoxResults
             // 
             listBoxResults.FormattingEnabled = true;
-            listBoxResults.Location = new Point(262, 47);
+            listBoxResults.Location = new Point(209, 44);
             listBoxResults.Name = "listBoxResults";
-            listBoxResults.Size = new Size(492, 364);
+            listBoxResults.Size = new Size(545, 364);
             listBoxResults.TabIndex = 0;
-            listBoxResults.SelectedIndexChanged += listBoxResults_SelectedIndexChanged;
             // 
             // btnSort
             // 
-            btnSort.Location = new Point(43, 47);
+            btnSort.Location = new Point(45, 44);
             btnSort.Name = "btnSort";
-            btnSort.Size = new Size(192, 53);
+            btnSort.Size = new Size(126, 53);
             btnSort.TabIndex = 1;
             btnSort.Text = "Sort";
             btnSort.UseVisualStyleBackColor = true;
-            btnSort.Click += btnSort_click;
+            btnSort.Click += btnSort_Click_1;
             // 
             // Form1
             // 
