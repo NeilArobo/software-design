@@ -20,20 +20,63 @@
 			base.Dispose(disposing);
 		}
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		///  Required method for Designer support - do not modify
-		///  the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-			this.components = new System.ComponentModel.Container();
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Text = "Form1";
-		}
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            btnCalculateFactorial = new Button();
+            lblResult = new Label();
+            txtInput = new TextBox();
+            SuspendLayout();
+            // 
+            // btnCalculateFactorial
+            // 
+            btnCalculateFactorial.Location = new Point(242, 232);
+            btnCalculateFactorial.Name = "btnCalculateFactorial";
+            btnCalculateFactorial.Size = new Size(94, 39);
+            btnCalculateFactorial.TabIndex = 0;
+            btnCalculateFactorial.Text = "Calculate";
+            btnCalculateFactorial.UseVisualStyleBackColor = true;
+            btnCalculateFactorial.Click += btnCalculateFactorial_Click;
+            // 
+            // lblResult
+            // 
+            lblResult.AutoSize = true;
+            lblResult.Location = new Point(374, 241);
+            lblResult.Name = "lblResult";
+            lblResult.Size = new Size(52, 20);
+            lblResult.TabIndex = 1;
+            lblResult.Text = "Result:";
+            // 
+            // txtInput
+            // 
+            txtInput.Location = new Point(242, 184);
+            txtInput.Name = "txtInput";
+            txtInput.Size = new Size(316, 27);
+            txtInput.TabIndex = 2;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(txtInput);
+            Controls.Add(lblResult);
+            Controls.Add(btnCalculateFactorial);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
+        }
 
-		#endregion
-	}
+        #endregion
+
+        private Button btnCalculateFactorial;
+        private Label lblResult;
+        private TextBox txtInput;
+    }
 }
