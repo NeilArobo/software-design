@@ -20,20 +20,50 @@
 			base.Dispose(disposing);
 		}
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		///  Required method for Designer support - do not modify
-		///  the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-			this.components = new System.ComponentModel.Container();
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Text = "Form1";
-		}
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            btnShowInfo = new Button();
+            listBoxBooks = new ListBox();
+            SuspendLayout();
+            // 
+            // btnShowInfo
+            // 
+            btnShowInfo.Location = new Point(348, 12);
+            btnShowInfo.Name = "btnShowInfo";
+            btnShowInfo.Size = new Size(94, 45);
+            btnShowInfo.TabIndex = 0;
+            btnShowInfo.Text = "Show Info";
+            btnShowInfo.UseVisualStyleBackColor = true;
+            // 
+            // listBoxBooks
+            // 
+            listBoxBooks.FormattingEnabled = true;
+            listBoxBooks.Location = new Point(12, 83);
+            listBoxBooks.Name = "listBoxBooks";
+            listBoxBooks.Size = new Size(776, 344);
+            listBoxBooks.TabIndex = 1;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(listBoxBooks);
+            Controls.Add(btnShowInfo);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
+        }
 
-		#endregion
-	}
+        #endregion
+
+        private Button btnShowInfo;
+        private ListBox listBoxBooks;
+    }
 }
