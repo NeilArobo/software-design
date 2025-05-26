@@ -40,13 +40,14 @@
             btnShowInfo.TabIndex = 0;
             btnShowInfo.Text = "Show Info";
             btnShowInfo.UseVisualStyleBackColor = true;
+            btnShowInfo.Click += btnShowInfo_Click;
             // 
             // listBoxBooks
             // 
             listBoxBooks.FormattingEnabled = true;
-            listBoxBooks.Location = new Point(12, 83);
+            listBoxBooks.Location = new Point(31, 83);
             listBoxBooks.Name = "listBoxBooks";
-            listBoxBooks.Size = new Size(776, 344);
+            listBoxBooks.Size = new Size(738, 324);
             listBoxBooks.TabIndex = 1;
             // 
             // Form1
