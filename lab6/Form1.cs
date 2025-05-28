@@ -61,5 +61,36 @@ namespace lab6
             await SaveBookAsync(bookTitle, authorName);
             MessageBox.Show("Book and Author saved successfully.");
         }
+
+        public async Task<bool> DeleteBookWithBookIDAsync(int id)
+        {
+            using (var context = new BookstoreContext())
+            {
+                var book = await context.Books.FindAsync(id);
+                if (book == null)
+                    return false;
+
+                context.Books.Remove(book);
+                await context.SaveChangesAsync();
+                return true;
+            }
+        }
+
+        private async void btnDeleteBook_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtboxBookID.Text, out int bookId))
+            {
+                bool deleted = await DeleteBookWithBookIDAsync(bookId);
+
+                if (deleted)
+                    MessageBox.Show("Book deleted successfully.");
+                else
+                    MessageBox.Show($"Book with ID {bookId} not found.");
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid Book ID.");
+            }
+        }
     }
 }

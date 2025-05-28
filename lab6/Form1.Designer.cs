@@ -35,11 +35,18 @@
             label2 = new Label();
             txtboxBookTitle = new TextBox();
             btnAddBook = new Button();
+            panel1 = new Panel();
+            btnDelete = new Button();
+            txtboxBookID = new TextBox();
+            label3 = new Label();
+            btnUpdateBook = new Button();
+            panel2 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnFetchBooks
             // 
-            btnFetchBooks.Location = new Point(294, 23);
+            btnFetchBooks.Location = new Point(294, 37);
             btnFetchBooks.Name = "btnFetchBooks";
             btnFetchBooks.Size = new Size(94, 56);
             btnFetchBooks.TabIndex = 0;
@@ -89,7 +96,7 @@
             // 
             // btnAddBook
             // 
-            btnAddBook.Location = new Point(294, 95);
+            btnAddBook.Location = new Point(30, 178);
             btnAddBook.Name = "btnAddBook";
             btnAddBook.Size = new Size(94, 56);
             btnAddBook.TabIndex = 6;
@@ -97,11 +104,70 @@
             btnAddBook.UseVisualStyleBackColor = true;
             btnAddBook.Click += btnAddBook_Click;
             // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.Controls.Add(btnDelete);
+            panel1.Controls.Add(txtboxBookID);
+            panel1.Controls.Add(label3);
+            panel1.Location = new Point(42, 277);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(178, 150);
+            panel1.TabIndex = 7;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(41, 104);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(94, 30);
+            btnDelete.TabIndex = 8;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDeleteBook_Click;
+            // 
+            // txtboxBookID
+            // 
+            txtboxBookID.Location = new Point(16, 54);
+            txtboxBookID.Name = "txtboxBookID";
+            txtboxBookID.Size = new Size(144, 27);
+            txtboxBookID.TabIndex = 8;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Dock = DockStyle.Top;
+            label3.Font = new Font("Arial Narrow", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(0, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(177, 20);
+            label3.TabIndex = 8;
+            label3.Text = "Enter Book ID to delete a book.";
+            label3.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // btnUpdateBook
+            // 
+            btnUpdateBook.Location = new Point(155, 178);
+            btnUpdateBook.Name = "btnUpdateBook";
+            btnUpdateBook.Size = new Size(94, 56);
+            btnUpdateBook.TabIndex = 8;
+            btnUpdateBook.Text = "Update Book";
+            btnUpdateBook.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.Info;
+            panel2.Location = new Point(12, 12);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(257, 243);
+            panel2.TabIndex = 9;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(967, 450);
+            Controls.Add(btnUpdateBook);
+            Controls.Add(panel1);
             Controls.Add(btnAddBook);
             Controls.Add(label2);
             Controls.Add(txtboxBookTitle);
@@ -109,8 +175,11 @@
             Controls.Add(txtboxAuthorName);
             Controls.Add(listBoxBooks);
             Controls.Add(btnFetchBooks);
+            Controls.Add(panel2);
             Name = "Form1";
             Text = "Form1";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -124,5 +193,11 @@
         private Label label2;
         private TextBox txtboxBookTitle;
         private Button btnAddBook;
+        private Panel panel1;
+        private Button btnDelete;
+        private TextBox txtboxBookID;
+        private Label label3;
+        private Button btnUpdateBook;
+        private Panel panel2;
     }
 }
