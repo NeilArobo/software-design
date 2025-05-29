@@ -28,7 +28,7 @@ namespace lab5
             {
                 var booksWithAuthors = context.Books
                     .Include(b => b.Author)
-                    .Select(b => $"{b.Title} by {b.Author.Name}")
+                    .Select(b => $"{b.BookID} \t {b.Title} by {b.Author.Name}")
                     .ToList();
                 return booksWithAuthors;
             }
@@ -56,7 +56,6 @@ namespace lab5
                 if (book != null)
                 {
                     context.Books.Remove(book);
-                    context.Authors.Remove(author);
                     context.SaveChanges();
                     MessageBox.Show("Book deleted successfully.");
                 }
@@ -80,7 +79,7 @@ namespace lab5
                 var books = context.Books
                     .Include(b => b.Author)
                     .Where(b => b.Author.Name.Contains(authorName))
-                    .Select(b => $"{b.Title} by {b.Author.Name}")
+                    .Select(b => $"{b.BookID} \t {b.Title} by {b.Author.Name}")
                     .ToList();
 
                 if (books.Count > 0)
