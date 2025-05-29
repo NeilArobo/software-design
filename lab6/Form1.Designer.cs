@@ -41,12 +41,15 @@
             label3 = new Label();
             btnUpdateBook = new Button();
             panel2 = new Panel();
+            btnSearchBook = new Button();
+            progressBar = new ProgressBar();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // btnFetchBooks
             // 
-            btnFetchBooks.Location = new Point(294, 37);
+            btnFetchBooks.Location = new Point(265, 316);
             btnFetchBooks.Name = "btnFetchBooks";
             btnFetchBooks.Size = new Size(94, 56);
             btnFetchBooks.TabIndex = 0;
@@ -66,7 +69,7 @@
             // 
             txtboxAuthorName.Location = new Point(30, 52);
             txtboxAuthorName.Name = "txtboxAuthorName";
-            txtboxAuthorName.Size = new Size(219, 27);
+            txtboxAuthorName.Size = new Size(338, 27);
             txtboxAuthorName.TabIndex = 2;
             // 
             // label1
@@ -91,7 +94,7 @@
             // 
             txtboxBookTitle.Location = new Point(30, 124);
             txtboxBookTitle.Name = "txtboxBookTitle";
-            txtboxBookTitle.Size = new Size(219, 27);
+            txtboxBookTitle.Size = new Size(338, 27);
             txtboxBookTitle.TabIndex = 4;
             // 
             // btnAddBook
@@ -152,20 +155,41 @@
             btnUpdateBook.TabIndex = 8;
             btnUpdateBook.Text = "Update Book";
             btnUpdateBook.UseVisualStyleBackColor = true;
+            btnUpdateBook.Click += btnUpdateBook_Click;
             // 
             // panel2
             // 
             panel2.BackColor = SystemColors.Info;
+            panel2.Controls.Add(btnSearchBook);
             panel2.Location = new Point(12, 12);
             panel2.Name = "panel2";
-            panel2.Size = new Size(257, 243);
+            panel2.Size = new Size(381, 243);
             panel2.TabIndex = 9;
+            // 
+            // btnSearchBook
+            // 
+            btnSearchBook.Location = new Point(262, 166);
+            btnSearchBook.Name = "btnSearchBook";
+            btnSearchBook.Size = new Size(94, 56);
+            btnSearchBook.TabIndex = 10;
+            btnSearchBook.Text = "Search Book";
+            btnSearchBook.UseVisualStyleBackColor = true;
+            btnSearchBook.Click += btnSearchBook_Click;
+            // 
+            // progressBar
+            // 
+            progressBar.Location = new Point(521, 205);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new Size(362, 29);
+            progressBar.TabIndex = 10;
+            progressBar.Visible = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(967, 450);
+            Controls.Add(progressBar);
             Controls.Add(btnUpdateBook);
             Controls.Add(panel1);
             Controls.Add(btnAddBook);
@@ -180,6 +204,7 @@
             Text = "Form1";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -199,5 +224,7 @@
         private Label label3;
         private Button btnUpdateBook;
         private Panel panel2;
+        private Button btnSearchBook;
+        private ProgressBar progressBar;
     }
 }
