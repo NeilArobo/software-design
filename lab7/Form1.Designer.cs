@@ -28,25 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnBackPage = new Button();
+            btnPreviousPage = new Button();
             lblPageNumber = new Label();
             btnNextPage = new Button();
             listBoxBooks = new ListBox();
+            btnAddBook = new Button();
+            label1 = new Label();
+            txtboxBookTitle = new TextBox();
+            txtboxAuthorName = new TextBox();
+            label2 = new Label();
+            btnExportBooks = new Button();
             SuspendLayout();
             // 
-            // btnBackPage
+            // btnPreviousPage
             // 
-            btnBackPage.Location = new Point(220, 409);
-            btnBackPage.Name = "btnBackPage";
-            btnBackPage.Size = new Size(94, 29);
-            btnBackPage.TabIndex = 0;
-            btnBackPage.Text = "Back";
-            btnBackPage.UseVisualStyleBackColor = true;
+            btnPreviousPage.Location = new Point(367, 409);
+            btnPreviousPage.Name = "btnPreviousPage";
+            btnPreviousPage.Size = new Size(94, 29);
+            btnPreviousPage.TabIndex = 0;
+            btnPreviousPage.Text = "Previous";
+            btnPreviousPage.UseVisualStyleBackColor = true;
+            btnPreviousPage.Click += btnPreviousPage_Click;
             // 
             // lblPageNumber
             // 
             lblPageNumber.AutoSize = true;
-            lblPageNumber.Location = new Point(379, 413);
+            lblPageNumber.Location = new Point(526, 413);
             lblPageNumber.Name = "lblPageNumber";
             lblPageNumber.Size = new Size(41, 20);
             lblPageNumber.TabIndex = 1;
@@ -55,7 +62,7 @@
             // 
             // btnNextPage
             // 
-            btnNextPage.Location = new Point(487, 409);
+            btnNextPage.Location = new Point(634, 409);
             btnNextPage.Name = "btnNextPage";
             btnNextPage.Size = new Size(94, 29);
             btnNextPage.TabIndex = 2;
@@ -66,20 +73,79 @@
             // listBoxBooks
             // 
             listBoxBooks.FormattingEnabled = true;
-            listBoxBooks.Location = new Point(12, 12);
+            listBoxBooks.Location = new Point(314, 12);
             listBoxBooks.Name = "listBoxBooks";
-            listBoxBooks.Size = new Size(776, 384);
+            listBoxBooks.Size = new Size(474, 384);
             listBoxBooks.TabIndex = 3;
+            // 
+            // btnAddBook
+            // 
+            btnAddBook.Location = new Point(47, 173);
+            btnAddBook.Name = "btnAddBook";
+            btnAddBook.Size = new Size(94, 54);
+            btnAddBook.TabIndex = 4;
+            btnAddBook.Text = "Add Book";
+            btnAddBook.TextAlign = ContentAlignment.TopCenter;
+            btnAddBook.UseVisualStyleBackColor = true;
+            btnAddBook.Click += btnAddBook_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(32, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(79, 20);
+            label1.TabIndex = 5;
+            label1.Text = "Book Title:";
+            // 
+            // txtboxBookTitle
+            // 
+            txtboxBookTitle.Location = new Point(32, 48);
+            txtboxBookTitle.Name = "txtboxBookTitle";
+            txtboxBookTitle.Size = new Size(256, 27);
+            txtboxBookTitle.TabIndex = 6;
+            // 
+            // txtboxAuthorName
+            // 
+            txtboxAuthorName.Location = new Point(32, 119);
+            txtboxAuthorName.Name = "txtboxAuthorName";
+            txtboxAuthorName.Size = new Size(256, 27);
+            txtboxAuthorName.TabIndex = 7;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(32, 96);
+            label2.Name = "label2";
+            label2.Size = new Size(101, 20);
+            label2.TabIndex = 8;
+            label2.Text = "Author Name:";
+            // 
+            // btnExportBooks
+            // 
+            btnExportBooks.Location = new Point(172, 173);
+            btnExportBooks.Name = "btnExportBooks";
+            btnExportBooks.Size = new Size(94, 54);
+            btnExportBooks.TabIndex = 9;
+            btnExportBooks.Text = "Export Books";
+            btnExportBooks.TextAlign = ContentAlignment.TopCenter;
+            btnExportBooks.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnExportBooks);
+            Controls.Add(label2);
+            Controls.Add(txtboxAuthorName);
+            Controls.Add(txtboxBookTitle);
+            Controls.Add(label1);
+            Controls.Add(btnAddBook);
             Controls.Add(listBoxBooks);
             Controls.Add(btnNextPage);
             Controls.Add(lblPageNumber);
-            Controls.Add(btnBackPage);
+            Controls.Add(btnPreviousPage);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -88,9 +154,15 @@
 
         #endregion
 
-        private Button btnBackPage;
+        private Button btnPreviousPage;
         private Label lblPageNumber;
         private Button btnNextPage;
         private ListBox listBoxBooks;
+        private Button btnAddBook;
+        private Label label1;
+        private TextBox txtboxBookTitle;
+        private TextBox txtboxAuthorName;
+        private Label label2;
+        private Button btnExportBooks;
     }
 }
