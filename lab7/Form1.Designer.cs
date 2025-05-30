@@ -38,12 +38,13 @@
             txtboxAuthorName = new TextBox();
             label2 = new Label();
             btnExportBooks = new Button();
-            progressBar = new ProgressBar();
+            btnSearchBooks = new Button();
+            btnImportBooks = new Button();
             SuspendLayout();
             // 
             // btnPreviousPage
             // 
-            btnPreviousPage.Location = new Point(367, 409);
+            btnPreviousPage.Location = new Point(359, 409);
             btnPreviousPage.Name = "btnPreviousPage";
             btnPreviousPage.Size = new Size(94, 29);
             btnPreviousPage.TabIndex = 0;
@@ -54,16 +55,17 @@
             // lblPageNumber
             // 
             lblPageNumber.AutoSize = true;
-            lblPageNumber.Location = new Point(526, 413);
+            lblPageNumber.Location = new Point(470, 413);
+            lblPageNumber.MinimumSize = new Size(150, 20);
             lblPageNumber.Name = "lblPageNumber";
-            lblPageNumber.Size = new Size(41, 20);
+            lblPageNumber.Size = new Size(150, 20);
             lblPageNumber.TabIndex = 1;
             lblPageNumber.Text = "Page";
-            lblPageNumber.TextAlign = ContentAlignment.TopCenter;
+            lblPageNumber.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnNextPage
             // 
-            btnNextPage.Location = new Point(634, 409);
+            btnNextPage.Location = new Point(637, 409);
             btnNextPage.Name = "btnNextPage";
             btnNextPage.Size = new Size(94, 29);
             btnNextPage.TabIndex = 2;
@@ -86,7 +88,6 @@
             btnAddBook.Size = new Size(94, 54);
             btnAddBook.TabIndex = 4;
             btnAddBook.Text = "Add Book";
-            btnAddBook.TextAlign = ContentAlignment.TopCenter;
             btnAddBook.UseVisualStyleBackColor = true;
             btnAddBook.Click += btnAddBook_Click;
             // 
@@ -129,22 +130,36 @@
             btnExportBooks.Size = new Size(94, 54);
             btnExportBooks.TabIndex = 9;
             btnExportBooks.Text = "Export Books";
-            btnExportBooks.TextAlign = ContentAlignment.TopCenter;
             btnExportBooks.UseVisualStyleBackColor = true;
+            btnExportBooks.Click += btnExportBooks_Click;
             // 
-            // progressBar
+            // btnSearchBooks
             // 
-            progressBar.Location = new Point(367, 185);
-            progressBar.Name = "progressBar";
-            progressBar.Size = new Size(379, 29);
-            progressBar.TabIndex = 10;
+            btnSearchBooks.Location = new Point(47, 242);
+            btnSearchBooks.Name = "btnSearchBooks";
+            btnSearchBooks.Size = new Size(94, 54);
+            btnSearchBooks.TabIndex = 10;
+            btnSearchBooks.Text = "Search Books";
+            btnSearchBooks.UseVisualStyleBackColor = true;
+            btnSearchBooks.Click += btnSearchBooks_Click;
+            // 
+            // btnImportBooks
+            // 
+            btnImportBooks.Location = new Point(172, 242);
+            btnImportBooks.Name = "btnImportBooks";
+            btnImportBooks.Size = new Size(94, 54);
+            btnImportBooks.TabIndex = 11;
+            btnImportBooks.Text = "Import Books";
+            btnImportBooks.UseVisualStyleBackColor = true;
+            btnImportBooks.Click += btnImportBooks_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(progressBar);
+            Controls.Add(btnImportBooks);
+            Controls.Add(btnSearchBooks);
             Controls.Add(btnExportBooks);
             Controls.Add(label2);
             Controls.Add(txtboxAuthorName);
@@ -173,6 +188,7 @@
         private TextBox txtboxAuthorName;
         private Label label2;
         private Button btnExportBooks;
-        private ProgressBar progressBar;
+        private Button btnSearchBooks;
+        private Button btnImportBooks;
     }
 }

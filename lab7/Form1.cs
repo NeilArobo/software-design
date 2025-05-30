@@ -26,49 +26,6 @@ namespace lab7
             public int AuthorID { get; set; }
             public virtual Author Author { get; set; }
         }
-
-        //public async Task<List<string>> GetBooksAsync(IProgress<int> progress = null)
-        //{
-        //    using (var context = new BookstoreContext())
-        //    {
-        //        var totalBooks = await context.Books.CountAsync();
-        //        var booksList = new List<string>();
-
-        //        int processed = 0;
-        //        var books = await context.Books.Include(b => b.Author).ToListAsync();
-
-        //        foreach (var book in books)
-        //        {
-        //            booksList.Add($"{book.BookID} \t {book.Title} by {book.Author.Name}");
-
-        //            processed++;
-        //            int percent = totalBooks > 0 ? (processed * 100 / totalBooks) : 100;
-        //            progress?.Report(percent);
-
-        //            await Task.Delay(10);
-        //        }
-
-        //        return booksList;
-        //    }
-        //}
-        //private async void btnFetchBooks_Click(object sender, EventArgs e)
-        //{
-        //    progressBar.Visible = true;
-        //    progressBar.Value = 0;
-        //    progressBar.Visible = true;
-
-        //    var progress = new Progress<int>(value =>
-        //    {
-        //        progressBar.Value = Math.Min(value, 100);
-        //    });
-
-        //    var books = await GetBooksAsync(progress);
-        //    listBoxBooks.DataSource = books;
-
-        //    progressBar.Value = 100; // Ensure full on complete
-        //    await Task.Delay(300);   // Optional short delay
-        //    progressBar.Visible = false;
-        //}
         public async Task<List<string>> GetBooksByPageAsync(int pageNumber)
         {
             using (var context = new BookstoreContext())
@@ -86,31 +43,32 @@ namespace lab7
 
         private async void btnNextPage_Click(object sender, EventArgs e)
         {
-            if (currentPage < 1)
+            currentPage++;
+            var books = await GetBooksByPageAsync(currentPage);
+
+            if (books.Count == 0)
             {
-                currentPage++;
-                var books = await GetBooksByPageAsync(currentPage);
-                listBoxBooks.DataSource = books;
-                lblPageNumber.Text = $"Page {currentPage}";
+                currentPage--;
+                btnNextPage.Enabled = false;
             }
             else
             {
-                btnNextPage.Enabled = false;
+                listBoxBooks.DataSource = books;
+                lblPageNumber.Text = $"Page {currentPage}";
             }
+
+            btnPreviousPage.Enabled = true;
         }
         private async void btnPreviousPage_Click(object sender, EventArgs e)
         {
-            if (currentPage > 1)
-            {
-                currentPage--;
-                var books = await GetBooksByPageAsync(currentPage);
-                listBoxBooks.DataSource = books;
-                lblPageNumber.Text = $"Page {currentPage}";
-            }
-            else
-            {
-                btnPreviousPage.Enabled = false;
-            }
+            currentPage--;
+            var books = await GetBooksByPageAsync(currentPage);
+
+            listBoxBooks.DataSource = books;
+            lblPageNumber.Text = $"Page {currentPage}";
+
+            btnPreviousPage.Enabled = currentPage > 1;
+            btnNextPage.Enabled = true;
         }
 
         public async Task SaveBookWithHandlingAsync(string bookTitle, string authorName)
@@ -163,6 +121,101 @@ namespace lab7
                 string filePath = saveFileDialog.FileName;
                 await ExportBooksAsync(filePath);
                 MessageBox.Show("Books exported successfully.");
+            }
+        }
+
+        public async Task<List<string>> SearchBooksByTitleAsync(string title)
+        {
+            try
+            {
+                using (var context = new BookstoreContext())
+                {
+                    var books = await context.Books
+                        .Include(b => b.Author)
+                        .Where(b => EF.Functions.Like(b.Title, $"%{title}%"))
+                        .Select(b => $"{b.Title} by {b.Author.Name}")
+                        .ToListAsync();
+
+                    return books;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while searching: {ex.Message}");
+                return new List<string>();
+            }
+        }
+
+        private async void btnSearchBooks_Click(object sender, EventArgs e)
+        {
+            string searchTerm = txtboxBookTitle.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                MessageBox.Show("Please enter a title to search.");
+                return;
+            }
+
+            var results = await SearchBooksByTitleAsync(searchTerm);
+
+            if (results.Any())
+            {
+                listBoxBooks.DataSource = results;
+                lblPageNumber.Text = "Search Results";
+            }
+            else
+            {
+                MessageBox.Show("No books found matching the title.");
+                listBoxBooks.DataSource = null;
+            }
+        }
+
+        public async Task ImportBooksFromFileAsync(string filePath)
+        {
+            var lines = await File.ReadAllLinesAsync(filePath);
+            int total = lines.Length;
+
+            using (var context = new BookstoreContext())
+            {
+                foreach (var line in lines)
+                {
+                    if (string.IsNullOrWhiteSpace(line) || !line.Contains(" by ")) continue;
+
+                    var parts = line.Split(" by ");
+                    if (parts.Length != 2) continue;
+
+                    string title = parts[0].Trim();
+                    string authorName = parts[1].Trim();
+
+                    var author = await context.Authors
+                        .FirstOrDefaultAsync(a => a.Name == authorName);
+
+                    if (author == null)
+                    {
+                        author = new Author { Name = authorName };
+                        context.Authors.Add(author);
+                        await context.SaveChangesAsync();
+                    }
+
+                    var book = new Book { Title = title, AuthorID = author.AuthorID };
+                    context.Books.Add(book);
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
+
+        private async void btnImportBooks_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+                openFileDialog.Title = "Select a Book Data File";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    await ImportBooksFromFileAsync(openFileDialog.FileName);
+                    MessageBox.Show("Books imported successfully!");
+                }
             }
         }
     }
