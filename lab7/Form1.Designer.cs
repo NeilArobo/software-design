@@ -38,6 +38,7 @@
             txtboxAuthorName = new TextBox();
             label2 = new Label();
             btnExportBooks = new Button();
+            progressBar = new ProgressBar();
             SuspendLayout();
             // 
             // btnPreviousPage
@@ -131,11 +132,19 @@
             btnExportBooks.TextAlign = ContentAlignment.TopCenter;
             btnExportBooks.UseVisualStyleBackColor = true;
             // 
+            // progressBar
+            // 
+            progressBar.Location = new Point(367, 185);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new Size(379, 29);
+            progressBar.TabIndex = 10;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(progressBar);
             Controls.Add(btnExportBooks);
             Controls.Add(label2);
             Controls.Add(txtboxAuthorName);
@@ -164,5 +173,6 @@
         private TextBox txtboxAuthorName;
         private Label label2;
         private Button btnExportBooks;
+        private ProgressBar progressBar;
     }
 }

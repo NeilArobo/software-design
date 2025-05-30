@@ -1,5 +1,3 @@
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace lab7
@@ -29,6 +27,48 @@ namespace lab7
             public virtual Author Author { get; set; }
         }
 
+        //public async Task<List<string>> GetBooksAsync(IProgress<int> progress = null)
+        //{
+        //    using (var context = new BookstoreContext())
+        //    {
+        //        var totalBooks = await context.Books.CountAsync();
+        //        var booksList = new List<string>();
+
+        //        int processed = 0;
+        //        var books = await context.Books.Include(b => b.Author).ToListAsync();
+
+        //        foreach (var book in books)
+        //        {
+        //            booksList.Add($"{book.BookID} \t {book.Title} by {book.Author.Name}");
+
+        //            processed++;
+        //            int percent = totalBooks > 0 ? (processed * 100 / totalBooks) : 100;
+        //            progress?.Report(percent);
+
+        //            await Task.Delay(10);
+        //        }
+
+        //        return booksList;
+        //    }
+        //}
+        //private async void btnFetchBooks_Click(object sender, EventArgs e)
+        //{
+        //    progressBar.Visible = true;
+        //    progressBar.Value = 0;
+        //    progressBar.Visible = true;
+
+        //    var progress = new Progress<int>(value =>
+        //    {
+        //        progressBar.Value = Math.Min(value, 100);
+        //    });
+
+        //    var books = await GetBooksAsync(progress);
+        //    listBoxBooks.DataSource = books;
+
+        //    progressBar.Value = 100; // Ensure full on complete
+        //    await Task.Delay(300);   // Optional short delay
+        //    progressBar.Visible = false;
+        //}
         public async Task<List<string>> GetBooksByPageAsync(int pageNumber)
         {
             using (var context = new BookstoreContext())
